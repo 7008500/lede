@@ -83,6 +83,7 @@ ramips_setup_interfaces()
 			"0:lan:4" "1:lan:3" "2:lan:2" "3:lan:1" "4:wan" "6@eth0"
 		;;
 	phicomm,k2p|\
+	phicomm,k2p-32m|\
 	xiaoyu,xy-c5)
 		ucidef_add_switch "switch0" \
 			"0:lan" "1:lan" "2:lan" "3:lan" "4:wan" "6@eth0"
@@ -201,7 +202,8 @@ ramips_setup_macs()
 		lan_mac=$(mtd_get_mac_binary factory 0x4)
 		wan_mac=$(macaddr_add "$lan_mac" 2)
 		;;
-	phicomm,k2p)
+	phicomm,k2p|\
+	phicomm,k2p-32m)
 		wan_mac=$(mtd_get_mac_binary factory 0xe006)
 		;;
 	xiaomi,mi-router-ac2100|\
